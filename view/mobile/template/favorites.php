@@ -6,7 +6,7 @@ if (!defined('InternalAccess')) exit('error: 403 Access Denied');
 if($Page>1){
 ?>
 
-	<li><a href="JavaScript:$.ui.loadContent('<?php echo $Config['WebsitePath']; ?>/favorites/page/<?php echo ($Page-1); ?>',false,false,'slide');"><?php echo $Lang['Page_Previous']; ?></a></li>
+	<li><a href="<?php echo $Config['WebsitePath']; ?>/favorites/page/<?php echo ($Page-1); ?>"><?php echo $Lang['Page_Previous']; ?></a></li>
 <?php
 }
 foreach ($TopicsArray as $Topic) {
@@ -19,8 +19,10 @@ foreach ($TopicsArray as $Topic) {
 					
 <?php
 }
-if($Page<$TotalPage){
+if($Page < $TotalPage){
 ?>
-	<li><a href="JavaScript:$.ui.loadContent('<?php echo $Config['WebsitePath']; ?>/favorites/page/<?php echo ($Page+1); ?>',false,false,'slide');"><?php echo $Lang['Page_Next']; ?></a></li>
-<?php } ?>
+	<li><a href="<?php echo $Config['WebsitePath']; ?>/favorites/page/<?php echo ($Page+1); ?>"><?php echo $Lang['Page_Next']; ?></a></li>
+<?php
+}
+?>
 </ul>

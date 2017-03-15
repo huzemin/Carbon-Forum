@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $IsApp) {
 			'NumFavTags' => 0,
 			'NumFavTopics' => 0,
 			'NewMessage' => 0,
+			'NewNotification' => 0,
 			'Topics' => 0,
 			'Replies' => 0,
 			'Followers' => 0,
@@ -107,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $IsApp) {
 				`ID`, `UserName`, `Salt`, `Password`, `UserMail`, 
 				`UserHomepage`, `PasswordQuestion`, `PasswordAnswer`, 
 				`UserSex`, `NumFavUsers`, `NumFavTags`, `NumFavTopics`, 
-				`NewMessage`, `Topics`, `Replies`, `Followers`, 
+				`NewMessage`, `NewNotification`, `Topics`, `Replies`, `Followers`, 
 				`DelTopic`, `GoodTopic`, `UserPhoto`, `UserMobile`, 
 				`UserLastIP`, `UserRegTime`, `LastLoginTime`, `LastPostTime`, 
 				`BlackLists`, `UserFriend`, `UserInfo`, `UserIntro`, `UserIM`, 
@@ -118,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $IsApp) {
 				:ID, :UserName, :Salt, :Password, :UserMail, 
 				:UserHomepage, :PasswordQuestion, :PasswordAnswer, 
 				:UserSex, :NumFavUsers, :NumFavTags, 
-				:NumFavTopics, :NewMessage, :Topics, :Replies, :Followers, 
+				:NumFavTopics, :NewMessage, :NewNotification, :Topics, :Replies, :Followers, 
 				:DelTopic, :GoodTopic, :UserPhoto, :UserMobile, 
 				:UserLastIP, :UserRegTime, :LastLoginTime, :LastPostTime, 
 				:BlackLists, :UserFriend, :UserInfo, :UserIntro, :UserIM, 
@@ -137,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $IsApp) {
 				$CurUserID
 			));
 		}
-		if(extension_loaded('gd')){
+		if (extension_loaded('gd')) {
 			require(LibraryPath . "MaterialDesign.Avatars.class.php");
 			$Avatar = new MDAvtars(mb_substr($UserName, 0, 1, "UTF-8"), 256);
 			$Avatar->Save(__DIR__ . '/../upload/avatar/large/' . $CurUserID . '.png', 256);
@@ -145,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || $IsApp) {
 			$Avatar->Save(__DIR__ . '/../upload/avatar/small/' . $CurUserID . '.png', 24);
 			$Avatar->Free();
 		}
-		if( !$IsApp ){
+		if (!$IsApp) {
 			SetCookies(array(
 				'UserID' => $CurUserID,
 				'UserExpirationTime' => $TemporaryUserExpirationTime,

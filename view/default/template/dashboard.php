@@ -21,6 +21,7 @@ $(document).ready(function(){
 		<li><?php echo $Lang['Advanced_Settings']; ?></li>
 		<li><?php echo $Lang['Oauth_Settings']; ?></li>
 		<li><?php echo $Lang['Refresh_Cache']; ?></li>
+		<li><?php echo $Lang['Recycle_Bin']; ?></li>
 	</ul>
 	<div class="resp-tabs-container">
 
@@ -144,6 +145,7 @@ $(document).ready(function(){
 						<select name="LoadJqueryUrl">
 							<option value="<?php echo $Config['LoadJqueryUrl']; ?>"><?php echo $Config['LoadJqueryUrl']; ?>  (Current)</option>
 							<option value="<?php echo $Config['WebsitePath']; ?>/static/js/jquery.js"><?php echo $Config['WebsitePath']; ?>/static/js/jquery.js  (Local)</option>
+							<option value="//cdn.bootcss.com/jquery/1.10.2/jquery.min.js">cdn.bootcss.com/jquery/1.10.2/jquery.min.js  (Bootcss CDN)</option>
 							<option value="//lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js">lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js  (Sina CDN)</option>
 							<option value="//libs.baidu.com/jquery/1.10.2/jquery.min.js">libs.baidu.com/jquery/1.10.2/jquery.min.js  (Baidu CDN)</option>
 							<option value="//libs.useso.com/js/jquery/1.10.2/jquery.min.js">libs.useso.com/js/jquery/1.10.2/jquery.min.js  (Qihoo360 CDN)</option>
@@ -254,6 +256,11 @@ if($OauthDataExist && $Config['MainDomainName']){
 			<form method="post" action="<?php echo $Config['WebsitePath']; ?>/dashboard#dashboard5">
 				<input type="hidden" name="Action" value="Statistics" />
 				<div class="div-align"><input type="submit" value="<?php echo $Lang['Refresh_All_Cache']; ?>(<?php echo $Lang['Statistics']; ?>)" name="submit" class="textbtn" /></div>
+			</form>
+		</div>
+		<div>
+			<form method="get" action="<?php echo $Config['WebsitePath']; ?>/recycle-bin">
+				<div class="div-align"><input type="submit" value="<?php echo $Lang['Recycle_Bin']; ?>" name="submit" class="textbtn" /></div>
 			</form>
 		</div>
 	</div>
